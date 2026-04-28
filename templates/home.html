@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShopWave</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; background: #111827; color: #f9fafb; }
+    .card { border: 1px solid #374151; border-radius: 12px; padding: 1rem; margin: 0.75rem 0; background: #1f2937; }
+    input { padding: 0.6rem; border-radius: 8px; border: none; width: 280px; }
+    button { padding: 0.6rem 1rem; border-radius: 8px; border: none; background: #3b82f6; color: white; }
+  </style>
+</head>
+<body>
+  <h1>🛍️ ShopWave</h1>
+  <p>Starter Flask storefront added to the repository.</p>
+
+  <form method="get">
+    <input name="q" value="{{ query }}" placeholder="Search products or categories">
+    <button type="submit">Search</button>
+  </form>
+
+  {% if products %}
+    {% for product in products %}
+      <div class="card">
+        <h3>{{ product.name }}</h3>
+        <p>Category: {{ product.category }}</p>
+        <strong>${{ '%.2f'|format(product.price) }}</strong>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No products found.</p>
+  {% endif %}
+</body>
+</html>
